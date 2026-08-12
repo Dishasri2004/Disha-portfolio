@@ -1,393 +1,227 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="MediFlow — a Human-Centered Design case study for a healthcare appointment app concept, including research plan, personas, accessibility, and a usability testing framework." />
-  <meta property="og:title" content="MediFlow — HCD Case Study | Disha Srivastava">
-  <meta property="og:description" content="Healthcare appointment app concept: research plan, personas, information architecture, accessibility, and usability testing framework.">
-  <title>MediFlow — HCD Case Study | Disha Srivastava</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="MediFlow — a completed healthcare appointment experience concept by Disha Srivastava, combining accessible UX/UI and a working frontend prototype.">
+  <meta property="og:title" content="MediFlow — Healthcare Appointment Experience">
+  <meta property="og:description" content="A concise HCD case study about simplifying doctor search, appointment booking, localization, accessibility, and implementation.">
+  <title>MediFlow — Healthcare Appointment Experience | Disha Srivastava</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css" />
-  <style>
-    body { background: #f5f6f2; }
-    .case { max-width: 1080px; margin: 0 auto; padding: 56px 22px 80px; }
-    .case-hero { background: linear-gradient(135deg, #edf6f3 0%, #eef2ff 100%); border: 1px solid #dfe5df; border-radius: 28px; padding: 44px 38px; margin-bottom: 34px; }
-    .case-kicker { font-size: 12px; letter-spacing: .14em; text-transform: uppercase; font-weight: 800; color: #2b6657; margin-bottom: 12px; }
-    .case-hero h1 { font-size: clamp(34px, 4vw, 58px); margin: 0 0 18px; letter-spacing: -.05em; font-family: Manrope, sans-serif; }
-    .hero-meta { display: flex; flex-wrap: wrap; gap: 14px; color: #49605c; font-size: 14px; font-weight: 600; }
-    .hero-meta .tag { background: #fff; border: 1px solid #e2e6df; padding: 6px 12px; border-radius: 999px; font-size: 12px; }
-    .case section { margin-top: 30px; }
-    .case h2 { font-size: 26px; margin: 0 0 14px; letter-spacing: -.03em; font-family: Manrope, sans-serif; }
-    .case h3 { font-size: 17px; margin: 0 0 8px; }
-    .case p, .case li { color: #4e5856; font-size: 15px; line-height: 1.8; }
-    .case .lead { font-size: 17px; color: #2f3a37; }
-    .panel { background: #fffefb; border: 1px solid #e2ded5; border-radius: 22px; padding: 26px; box-shadow: 0 12px 30px rgba(22,30,29,.04); }
-    .panel h2 { margin-top: 0; }
-    .panel + .panel { margin-top: 18px; }
-    .step-marker { display: inline-block; font-size: 11px; font-weight: 800; color: #2b6657; background: #eaf1eb; padding: 5px 10px; border-radius: 999px; letter-spacing: .1em; margin-bottom: 10px; }
-    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
-    .three-col { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-    .four-col { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
-    .card { background: #fffefb; border: 1px solid #e2ded5; border-radius: 18px; padding: 22px; }
-    .card h3 { color: #214438; }
-    .card p { font-size: 13px; }
-    .card .role { font-size: 11px; font-weight: 800; color: #2b6657; text-transform: uppercase; letter-spacing: .08em; margin-bottom: 6px; }
-    .persona-tag, .research-tag, .concept-tag { display: inline-block; font-size: 10px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; padding: 5px 9px; border-radius: 999px; margin-bottom: 12px; }
-    .persona-tag { background: #f6e9bd; color: #65551f; }
-    .research-tag { background: #f5ebe5; color: #775445; }
-    .concept-tag { background: #eaf1eb; color: #214438; }
-    .persona-meta { display: grid; gap: 8px; margin-top: 14px; font-size: 12px; }
-    .persona-meta div { display: flex; gap: 8px; }
-    .persona-meta b { color: #2b6657; min-width: 110px; }
-    .persona-meta span { color: #5f6862; }
-    .flow-diagram { display: flex; align-items: stretch; gap: 8px; flex-wrap: wrap; }
-    .flow-step { flex: 1 1 120px; background: #fffefb; border: 1px solid #e2ded5; border-radius: 14px; padding: 16px; text-align: center; }
-    .flow-step b { display: block; color: #214438; font-size: 13px; margin-bottom: 4px; }
-    .flow-step span { font-size: 11px; color: #5f6862; }
-    .flow-arrow { display: grid; place-items: center; color: #e7b83f; font-weight: 800; }
-    .ia-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
-    .ia-list li { background: #f2f5f1; border: 1px solid #e1e7e1; border-radius: 12px; padding: 14px 16px; font-size: 13px; }
-    .ia-list b { color: #214438; }
-    .screen-layout { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
-    .screen-card { background: linear-gradient(180deg, #f9faf7, #f1efe9); border: 1px solid #e6e1d6; border-radius: 20px; padding: 14px; position: relative; overflow: hidden; }
-    .screen-card img { width: 100%; height: 100%; object-fit: contain; border-radius: 14px; }
-    .screen-caption { font-size: 11px; color: #5f6862; text-align: center; margin-top: 10px; font-weight: 600; }
-    .ds-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
-    .ds-item { background: #fffefb; border: 1px solid #e2ded5; border-radius: 14px; padding: 16px; }
-    .ds-item h3 { font-size: 14px; margin-bottom: 10px; }
-    .swatch-row { display: flex; gap: 8px; margin-bottom: 8px; }
-    .swatch { width: 38px; height: 38px; border-radius: 10px; border: 1px solid rgba(0,0,0,.06); }
-    .type-sample { font-family: Manrope, sans-serif; font-size: 18px; font-weight: 700; color: #214438; }
-    .type-small { font-size: 12px; color: #5f6862; margin-top: 4px; }
-    .state-row { display: flex; gap: 8px; flex-wrap: wrap; }
-    .state-btn { padding: 8px 14px; border-radius: 9px; font-size: 12px; font-weight: 700; border: 1px solid #e2ded5; background: #fff; color: #214438; }
-    .state-btn.primary { background: #315e4e; color: white; border-color: #315e4e; }
-    .state-btn.focus { outline: 3px solid #e7b83f; outline-offset: 2px; }
-    .state-btn.disabled { opacity: .5; cursor: not-allowed; }
-    .state-btn.error { border-color: #d88080; color: #a44; }
-    .state-btn.success { border-color: #6fae6f; color: #3a7a3a; }
-    .ba-pair { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 14px; }
-    .ba-pair .ba-card { background: #fffefb; border: 1px solid #e2ded5; border-radius: 14px; padding: 18px; }
-    .ba-pair .ba-card.bad { border-color: #e6c9c9; background: #fcf3f3; }
-    .ba-pair .ba-card.good { border-color: #c9e0c9; background: #f3faf3; }
-    .ba-pair .ba-card p { margin: 10px 0 4px; font-weight: 700; font-size: 14px; }
-    .ba-pair .ba-card small { color: #5f6862; font-size: 12px; }
-    .ba-pair .arrow { color: #e7b83f; font-weight: 800; }
-    .ba-label { font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: .08em; }
-    .ba-label.bad { color: #a44; }
-    .ba-label.good { color: #3a7a3a; }
-    .test-table { width: 100%; border-collapse: collapse; font-size: 13px; }
-    .test-table th, .test-table td { text-align: left; padding: 12px 14px; border-bottom: 1px solid #ece8df; }
-    .test-table th { font-size: 11px; text-transform: uppercase; letter-spacing: .08em; color: #2b6657; }
-    .test-table td { color: #4e5856; }
-    .reasoning-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-    .reasoning-card { background: #fffefb; border: 1px solid #e2ded5; border-radius: 16px; padding: 20px; }
-    .reasoning-card .step-marker { margin-bottom: 0; }
-    .reasoning-card h3 { margin: 10px 0 8px; }
-    .reasoning-card p { margin: 4px 0; font-size: 13px; }
-    .reasoning-card b { color: #214438; }
-    .case-actions { display: flex; gap: 16px; margin-top: 34px; flex-wrap: wrap; }
-    .btn-case { display: inline-flex; align-items: center; gap: 8px; background: #2d5a4d; color: white; padding: 12px 20px; border-radius: 12px; font-weight: 700; text-decoration: none; }
-    .btn-case.secondary { background: white; color: #22473b; border: 1px solid #d7d2c8; }
-    .figma-placeholder { display: grid; place-items: center; text-align: center; gap: 8px; padding: 30px; background: #f2f5f1; border: 1px dashed #c9d3c9; border-radius: 16px; color: #5f6862; font-size: 13px; }
-    .figma-placeholder .figma-mark { width: 44px; height: 44px; border-radius: 12px; background: #315e4e; color: white; display: grid; place-items: center; font-weight: 800; }
-    @media (max-width: 900px) { .two-col, .three-col, .four-col, .ds-grid, .reasoning-grid { grid-template-columns: 1fr; } .screen-layout { grid-template-columns: repeat(2, 1fr); } .ba-pair { grid-template-columns: 1fr; } .ba-pair .arrow { transform: rotate(90deg); justify-self: center; } }
-    @media (max-width: 560px) { .screen-layout { grid-template-columns: 1fr; } .flow-step { flex: 1 1 100%; } .flow-arrow { transform: rotate(90deg); } }
-  </style>
+  <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body class="case-page">
   <a class="skip-link" href="#case-main">Skip to content</a>
   <header class="nav-wrap">
     <nav class="nav container" aria-label="Primary navigation">
-      <a class="brand" href="index.html" aria-label="Disha Srivastava home">
-        <span class="brand-mark">DS</span>
-        <span>Disha Srivastava</span>
-      </a>
+      <a class="brand" href="index.html" aria-label="Disha Srivastava home"><span class="brand-mark">DS</span><span>Disha Srivastava</span></a>
       <button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav-links">Menu</button>
       <div class="nav-links" id="nav-links">
         <a href="index.html#work">Work</a>
-        <a href="index.html#research">Research</a>
-        <a href="index.html#accessibility">Accessibility</a>
+        <a href="index.html#approach">Process</a>
         <a href="index.html#about">About</a>
+        <a href="index.html#skills">Toolkit</a>
         <a class="nav-cta" href="index.html#contact">Let's Connect <span aria-hidden="true">↗</span></a>
       </div>
     </nav>
   </header>
 
   <main class="case" id="case-main">
-    <section class="case-hero">
-      <div class="case-kicker">Human-Centered Design Case Study</div>
+    <header class="case-hero">
+      <p class="section-kicker">COMPLETED CONCEPT · WORKING FRONTEND PROTOTYPE</p>
       <h1>MediFlow</h1>
-      <div class="hero-meta">
-        <span class="tag">Healthcare Appointment Experience</span>
-        <span class="tag">Concept · Mobile UX</span>
-        <span class="tag">Accessibility · IA · Research Plan</span>
+      <p class="case-subtitle">Healthcare Appointment Experience</p>
+      <div class="case-meta-grid">
+        <div><b>Role</b><span>UX/UI Designer · Product Thinker · Developer</span></div>
+        <div><b>Type</b><span>Concept + Working Prototype</span></div>
+        <div><b>Focus</b><span>Information Architecture · Mobile UX · Accessibility · Localization · Responsive Design</span></div>
+        <div><b>Technology</b><span>React · TypeScript · Tailwind CSS · Lovable</span></div>
+      </div>
+      <div class="case-actions">
+        <a class="btn btn-primary" href="https://mediflow-connect-henna.vercel.app/" target="_blank" rel="noopener">Try MediFlow <span aria-hidden="true">↗</span></a>
+        <a class="text-btn" href="index.html#work">Back to selected work <span aria-hidden="true">↗</span></a>
+      </div>
+    </header>
+
+    <section class="case-section case-overview">
+      <div class="case-section-label">01 — Overview</div>
+      <div>
+        <p class="case-lead">A small, thoughtful healthcare UX concept exploring how clearer information hierarchy, accessible interactions, and progressive decision-making can make appointment booking feel less confusing.</p>
+        <p>MediFlow helps a person find a doctor and book an appointment through a short, predictable flow. It uses fictional data and is not a real healthcare deployment.</p>
       </div>
     </section>
 
-    <section>
-      <p class="lead">MediFlow is a <strong>concept</strong> for a healthcare appointment app. This case study shows how I would approach the problem as a human-centered designer: understanding context, making assumptions visible, structuring the experience, and planning validation. It is not a record of completed fieldwork or professional client work.</p>
-    </section>
-
-    <section class="panel">
-      <span class="step-marker">01 — Context</span>
-      <h2>Why healthcare appointments?</h2>
-      <p>Booking a consultation is often the first stressful touchpoint in care. People may be unwell, anxious, in a hurry, or helping a family member. The interface has to reduce uncertainty, not add to it. I chose this space because it rewards clarity, trust, and accessibility — the same priorities that matter in public-service and low-resource design.</p>
-    </section>
-
-    <section class="panel">
-      <span class="step-marker">02 — Problem</span>
-      <h2>What makes booking hard today?</h2>
-      <p>Looking at existing appointment flows, common friction points include unclear doctor options, hidden availability, too many steps before confirmation, and error messages that do not explain what to do next. The design problem is not just visual — it is about helping a stressed user make a confident decision quickly.</p>
-    </section>
-
-    <section>
-      <span class="step-marker">03 — Users &amp; Context</span>
-      <h2>Who is this for?</h2>
-      <p class="lead">The users below are <strong>proto-personas</strong> built from design assumptions, not from interviews. They are meant to make assumptions discussable and testable.</p>
-      <div class="three-col" style="margin-top: 18px;">
-        <div class="card">
-          <span class="persona-tag">Proto-persona · Hypothesis</span>
-          <div class="role">Persona A</div>
-          <h3>First-time smartphone user</h3>
-          <p>Older adult or new to digital services. Needs large touch targets, plain language, and reassurance at each step.</p>
-          <div class="persona-meta">
-            <div><b>Goal</b><span>Book without feeling lost</span></div>
-            <div><b>Frustration</b><span>Unfamiliar terms, tiny buttons</span></div>
-            <div><b>Digital comfort</b><span>Low</span></div>
-            <div><b>Access needs</b><span>Larger text, clear labels</span></div>
-          </div>
+    <section class="case-section">
+      <div class="case-section-label">02 — Problem</div>
+      <div>
+        <h2>Make the next step easier to understand.</h2>
+        <p>Healthcare appointment interfaces can make users uncertain about what to do next. MediFlow explores a simpler sequence:</p>
+        <div class="case-flow case-flow-compact">
+          <span>Find a doctor</span><i aria-hidden="true">→</i><span>Choose a time</span><i aria-hidden="true">→</i><span>Enter details</span><i aria-hidden="true">→</i><span>Confirm</span>
         </div>
-        <div class="card">
-          <span class="persona-tag">Proto-persona · Hypothesis</span>
-          <div class="role">Persona B</div>
-          <h3>Busy working adult</h3>
-          <p>Books for themselves between tasks. Wants speed, predictable availability, and a clear confirmation.</p>
-          <div class="persona-meta">
-            <div><b>Goal</b><span>Book in under a minute</span></div>
-            <div><b>Frustration</b><span>Hidden slots, slow flows</span></div>
-            <div><b>Digital comfort</b><span>Medium–high</span></div>
-            <div><b>Access needs</b><span>Efficient, scannable layout</span></div>
-          </div>
-        </div>
-        <div class="card">
-          <span class="persona-tag">Proto-persona · Hypothesis</span>
-          <div class="role">Persona C</div>
-          <h3>Family caregiver</h3>
-          <p>Books for a parent or relative. Needs to track appointments they will not attend themselves.</p>
-          <div class="persona-meta">
-            <div><b>Goal</b><span>Manage someone else's visit</span></div>
-            <div><b>Frustration</b><span>No clear summary to share</span></div>
-            <div><b>Digital comfort</b><span>Medium</span></div>
-            <div><b>Access needs</b><span>Shareable confirmation details</span></div>
-          </div>
-        </div>
+        <p>The experience focuses on reducing cognitive load, showing information progressively, using plain language, keeping interactions predictable, and providing clear feedback.</p>
       </div>
     </section>
 
-    <section class="panel">
-      <span class="step-marker">04 — Research Plan</span>
-      <h2>How I would validate the design</h2>
-      <p>This is a <strong>proposed research plan</strong>, not completed research. Before treating the concept as a solution, I would test assumptions through a mix of qualitative and quantitative methods.</p>
-      <div class="four-col" style="margin-top: 18px;">
-        <div class="card"><div class="role">Qualitative</div><h3>Semi-structured interviews</h3><p>Explore how people currently find and book care, what worries them, and where they give up.</p></div>
-        <div class="card"><div class="role">Qualitative</div><h3>Contextual inquiry</h3><p>Observe booking in a real setting — at home, on a shared device, or while multitasking.</p></div>
-        <div class="card"><div class="role">Quantitative</div><h3>Short survey</h3><p>Measure how often people abandon booking, which steps confuse them, and what devices they use.</p></div>
-        <div class="card"><div class="role">Mixed</div><h3>Competitive review</h3><p>Compare existing appointment flows for structure, language, and error handling.</p></div>
+    <section class="case-section case-visual-section">
+      <div class="case-section-label">The interface</div>
+      <div>
+        <figure class="case-hero-image">
+          <img src="images/mediflow-screenshots/Screenshot_2026-08-13_015341.png" alt="MediFlow English home screen with the headline Find the right care, without the confusion" width="1920" height="1080" loading="eager">
+          <figcaption>Home — a clear entry point for finding a doctor or specialty.</figcaption>
+        </figure>
       </div>
     </section>
 
-    <section class="panel">
-      <span class="step-marker">05 — Key Assumptions</span>
-      <h2>What I am not sure about yet</h2>
-      <div class="reasoning-grid">
-        <div class="reasoning-card"><p><b>Assumption:</b> Users want to choose a doctor by specialization first.</p><p><b>Why it matters:</b> It shapes the entire information architecture.</p><p><b>How I would test it:</b> Card-sorting and tree testing with first-time users.</p></div>
-        <div class="reasoning-card"><p><b>Assumption:</b> A single primary action per screen reduces hesitation.</p><p><b>Why it matters:</b> It drives the step count and visual hierarchy.</p><p><b>How I would test it:</b> Moderated usability sessions comparing one-CTA vs multi-CTA layouts.</p></div>
-        <div class="reasoning-card"><p><b>Assumption:</b> People trust visible availability more than a “request callback” flow.</p><p><b>Why it matters:</b> It determines whether slots are shown upfront or after selection.</p><p><b>How I would test it:</b> A/B prototype test measuring confidence and completion.</p></div>
-        <div class="reasoning-card"><p><b>Assumption:</b> Hindi labels help comprehension for a segment of users.</p><p><b>Why it matters:</b> It affects localization scope and content design.</p><p><b>How I would test it:</b> Comprehension testing with bilingual and Hindi-primary users.</p></div>
-      </div>
-    </section>
-
-    <section>
-      <span class="step-marker">06 — Personas</span>
-      <h2>From assumptions to testable profiles</h2>
-      <p class="lead">These proto-personas are design hypotheses. They help prioritize design decisions and define who to recruit for validation.</p>
-      <p>Each persona is tagged explicitly as a hypothesis so the team can confirm or replace it once real interviews and observation are conducted. Persona A prioritizes accessibility and plain language; Persona B prioritizes speed and scannability; Persona C prioritizes shareable summaries.</p>
-    </section>
-
-    <section class="panel">
-      <span class="step-marker">07 — User Journey</span>
-      <h2>A typical booking journey (proposed)</h2>
-      <p>This journey is a hypothesis based on common care-seeking behavior, not observed field data.</p>
-      <div class="flow-diagram" style="margin-top: 18px;">
-        <div class="flow-step"><b>Need care</b><span>Symptom or follow-up</span></div>
-        <div class="flow-arrow" aria-hidden="true">→</div>
-        <div class="flow-step"><b>Open app</b><span>Expect quick help</span></div>
-        <div class="flow-arrow" aria-hidden="true">→</div>
-        <div class="flow-step"><b>Find doctor</b><span>By specialization</span></div>
-        <div class="flow-arrow" aria-hidden="true">→</div>
-        <div class="flow-step"><b>Check slots</b><span>Visible availability</span></div>
-        <div class="flow-arrow" aria-hidden="true">→</div>
-        <div class="flow-step"><b>Confirm</b><span>Clear summary</span></div>
-      </div>
-    </section>
-
-    <section class="panel">
-      <span class="step-marker">08 — Pain Points</span>
-      <h2>Where confidence drops</h2>
-      <ul>
-        <li><b>Unclear next step:</b> multiple equally prominent actions create hesitation.</li>
-        <li><b>Hidden availability:</b> users cannot tell if a slot is real until late in the flow.</li>
-        <li><b>Unexplained errors:</b> messages like “Invalid input” do not tell users what to fix.</li>
-        <li><b>No shareable summary:</b> caregivers cannot easily pass confirmation details to the person receiving care.</li>
-      </ul>
-    </section>
-
-    <section class="panel">
-      <span class="step-marker">09 — Problem Definition</span>
-      <h2>The focused problem</h2>
-      <p>Help a stressed or time-poor user confidently find a doctor, see real availability, and confirm an appointment — with minimal steps, plain language, and clear recovery from errors — across devices and digital comfort levels.</p>
-    </section>
-
-    <section class="panel">
-      <span class="step-marker">10 — User Flow</span>
-      <h2>One primary path, with recovery</h2>
-      <div class="flow-diagram" style="margin-top: 18px;">
-        <div class="flow-step"><b>Home</b><span>One clear CTA</span></div>
-        <div class="flow-arrow" aria-hidden="true">→</div>
-        <div class="flow-step"><b>Specialization</b><span>Browse categories</span></div>
-        <div class="flow-arrow" aria-hidden="true">→</div>
-        <div class="flow-step"><b>Doctor</b><span>Details &amp; trust cues</span></div>
-        <div class="flow-arrow" aria-hidden="true">→</div>
-        <div class="flow-step"><b>Time slot</b><span>Visible availability</span></div>
-        <div class="flow-arrow" aria-hidden="true">→</div>
-        <div class="flow-step"><b>Confirmation</b><span>Shareable summary</span></div>
-      </div>
-      <p style="margin-top: 16px;">Each step has one primary action. If a slot is unavailable, the user is guided to the next nearest option rather than a dead end.</p>
-    </section>
-
-    <section class="panel">
-      <span class="step-marker">11 — Information Architecture</span>
-      <h2>Why the structure reduces cognitive load</h2>
-      <ul class="ia-list">
-        <li><b>Home</b> — one primary entry point, no competing CTAs.</li>
-        <li><b>Specialization</b> — groups doctors by need, not by hospital structure.</li>
-        <li><b>Doctor detail</b> — trust cues (name, specialization, availability) before action.</li>
-        <li><b>Time slot</b> — availability visible before commitment.</li>
-        <li><b>Confirmation</b> — shareable summary with all details in one place.</li>
-      </ul>
-    </section>
-
-    <section class="panel">
-      <span class="step-marker">12 — Wireframes</span>
-      <h2>Low-fidelity structure before visuals</h2>
-      <p>Wireframes focused on hierarchy and sequence: what comes first on each screen, what is secondary, and where the user’s eye should land. The goal was to test the flow before investing in visual design.</p>
-      <div class="figma-placeholder" style="margin-top: 16px;">
-        <div class="figma-mark" aria-hidden="true">F</div>
-        <strong>Figma wireframes — coming soon</strong>
-        <span>Wireframe frames will be linked here once the Figma file is published.</span>
-      </div>
-    </section>
-
-    <section>
-      <span class="step-marker">13 — UI Design</span>
-      <h2>App screens</h2>
-      <p>The screens below show the current visual direction: calm green and white tones, readable type, and one primary action per screen.</p>
-      <div class="screen-layout" style="margin-top: 18px;">
-        <div class="screen-card">
-          <img src="images/cropped/ui_1.png" alt="MediFlow home screen with a clear primary action to start booking" loading="lazy" />
-          <div class="screen-caption">Home</div>
-        </div>
-        <div class="screen-card">
-          <img src="images/cropped/ui_2.png" alt="MediFlow specialization and doctor list screen" loading="lazy" />
-          <div class="screen-caption">Specialization &amp; doctors</div>
-        </div>
-        <div class="screen-card">
-          <img src="images/cropped/ui_3.png" alt="MediFlow date and time slot selection screen" loading="lazy" />
-          <div class="screen-caption">Date &amp; slot selection</div>
-        </div>
-        <div class="screen-card">
-          <img src="images/cropped/ui_4.png" alt="MediFlow appointment confirmation screen with shareable summary" loading="lazy" />
-          <div class="screen-caption">Confirmation</div>
+    <section class="case-section">
+      <div class="case-section-label">03 — Users &amp; Design Hypotheses</div>
+      <div>
+        <h2>Three contexts to design around.</h2>
+        <p class="case-note">Proto-personas · Design hypotheses. These assumptions would need validation through interviews and usability testing.</p>
+        <div class="case-card-grid three">
+          <article class="case-card">
+            <span class="hypothesis-tag">Proto-persona</span>
+            <h3>First-time smartphone user</h3>
+            <p>May need large touch-friendly controls, plain language, and reassurance at each step.</p>
+          </article>
+          <article class="case-card">
+            <span class="hypothesis-tag">Proto-persona</span>
+            <h3>Busy working adult</h3>
+            <p>May value a quick, scannable flow with visible availability and a clear confirmation.</p>
+          </article>
+          <article class="case-card">
+            <span class="hypothesis-tag">Proto-persona</span>
+            <h3>Family caregiver</h3>
+            <p>May book for someone else and need a complete appointment summary they can refer to.</p>
+          </article>
         </div>
       </div>
     </section>
 
-    <section class="panel">
-      <span class="step-marker">14 — Accessibility</span>
-      <h2>Decisions baked into the design</h2>
-      <div class="four-col">
-        <div class="card"><h3>Contrast</h3><p>Text meets WCAG AA against calm green and white backgrounds.</p></div>
-        <div class="card"><h3>Touch targets</h3><p>Primary actions sized for comfortable tapping on small screens.</p></div>
-        <div class="card"><h3>Language</h3><p>Plain wording, meaningful labels, and no icon-only actions.</p></div>
-        <div class="card"><h3>Recovery</h3><p>Errors name the problem and the fix, not just the failure.</p></div>
-      </div>
-      <div class="ba-pair" style="margin-top: 18px;">
-        <div class="ba-card bad">
-          <span class="ba-label bad">Needs improvement</span>
-          <p>“Invalid input”</p>
-          <small>Does not explain what to fix.</small>
+    <section class="case-section case-visual-section">
+      <div class="case-section-label">04 — User Flow</div>
+      <div>
+        <div class="step-flow" aria-label="Four-step booking progress">
+          <div class="active"><b>01</b><span>Doctor</span></div>
+          <i aria-hidden="true">↓</i>
+          <div><b>02</b><span>Time</span></div>
+          <i aria-hidden="true">↓</i>
+          <div><b>03</b><span>Details</span></div>
+          <i aria-hidden="true">↓</i>
+          <div><b>04</b><span>Confirm</span></div>
         </div>
-        <div class="arrow" aria-hidden="true">→</div>
-        <div class="ba-card good">
-          <span class="ba-label good">More useful</span>
-          <p>“Enter a 10-digit phone number.”</p>
-          <small>Names the expected format and next action.</small>
+        <div class="case-flow case-flow-wide">
+          <span>Find doctor</span><i aria-hidden="true">→</i><span>Choose doctor</span><i aria-hidden="true">→</i><span>Choose time</span><i aria-hidden="true">→</i><span>Enter details</span><i aria-hidden="true">→</i><span>Review</span><i aria-hidden="true">→</i><span>Confirm</span>
+        </div>
+        <p>Each step focuses on one meaningful decision, keeping the booking process predictable.</p>
+      </div>
+    </section>
+
+    <section class="case-section">
+      <div class="case-section-label">05 — Design Decisions</div>
+      <div>
+        <h2>Four choices that shape the experience.</h2>
+        <div class="decision-grid">
+          <article><b>01 — Progressive information</b><p>Only show the information needed for the current decision.</p></article>
+          <article><b>02 — Clear doctor comparison</b><p>Specialty, language, experience, and availability are surfaced before selection.</p></article>
+          <article><b>03 — Actionable errors</b><p>Validation tells users what went wrong and how to fix it.</p></article>
+          <article><b>04 — Review before confirmation</b><p>Users can check and change details before anything is confirmed.</p></article>
         </div>
       </div>
     </section>
 
-    <section class="panel">
-      <span class="step-marker">15 — Prototype</span>
-      <h2>Making the flow testable</h2>
-      <p>The prototype is planned in Figma using Auto Layout and interactive components so the full booking flow can be tested end-to-end before any implementation.</p>
-      <div class="figma-placeholder" style="margin-top: 16px;">
-        <div class="figma-mark" aria-hidden="true">F</div>
-        <strong>Figma interactive prototype — coming soon</strong>
-        <span>The prototype link will be added here once the Figma file is published.</span>
+    <section class="case-section case-gallery-section">
+      <div class="case-section-label">Design evidence</div>
+      <div>
+        <div class="case-gallery">
+          <figure>
+            <img src="images/mediflow-screenshots/Screenshot_2026-08-13_013029.png" alt="MediFlow doctor search screen showing specialty, language, and availability filters" width="1920" height="1080" loading="lazy">
+            <figcaption><b>Progressive filtering</b><span>Specialty, language, and availability are visible before choosing a doctor.</span></figcaption>
+          </figure>
+          <figure>
+            <img src="images/mediflow-screenshots/Screenshot_2026-08-13_012934.png" alt="MediFlow Hindi home screen with Hindi navigation and doctor search" width="1920" height="1080" loading="lazy">
+            <figcaption><b>Language as part of the interface</b><span>The same entry point is explored in English and Hindi.</span></figcaption>
+          </figure>
+        </div>
       </div>
     </section>
 
-    <section class="panel">
-      <span class="step-marker">16 — Usability Testing Plan</span>
-      <h2>What I would measure (proposed study)</h2>
-      <p>This is a <strong>testing framework</strong>, not completed test results. No usability test has been conducted yet.</p>
-      <table class="test-table" style="margin-top: 16px;">
-        <thead>
-          <tr><th>Task</th><th>Success criteria</th><th>What I would observe</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>Book an appointment with a dermatologist for tomorrow afternoon.</td><td>Completed without help; correct doctor &amp; slot selected.</td><td>Task completion, errors, hesitation, time-on-task, navigation difficulty, comprehension.</td></tr>
-          <tr><td>Recover from entering an invalid phone number.</td><td>User understands the error and fixes it unaided.</td><td>Whether the message is understood; whether the user knows the next action.</td></tr>
-          <tr><td>Share the confirmation with a family member.</td><td>User finds and uses the summary without prompting.</td><td>Discoverability of the shareable summary; comprehension of details.</td></tr>
-        </tbody>
-      </table>
-    </section>
-
-    <section class="panel">
-      <span class="step-marker">17 — Iteration</span>
-      <h2>What would change after testing</h2>
-      <div class="reasoning-grid">
-        <div class="reasoning-card"><h3>If users hesitate at specialization</h3><p>Test a search-first home instead of category-first, and measure time-to-doctor.</p></div>
-        <div class="reasoning-card"><h3>If errors cause abandonment</h3><p>Move to inline validation and actionable messages, then re-test recovery rate.</p></div>
-        <div class="reasoning-card"><h3>If caregivers struggle to share</h3><p>Add a one-tap shareable summary and confirm it is discoverable in a follow-up test.</p></div>
-        <div class="reasoning-card"><h3>If Hindi labels help comprehension</h3><p>Expand localization and validate translated content with native speakers.</p></div>
+    <section class="case-section">
+      <div class="case-section-label">06 — Accessibility &amp; Inclusion</div>
+      <div>
+        <h2>Accessibility considered as part of the interaction.</h2>
+        <p class="case-note">This is an implementation consideration, not a formal accessibility certification or testing claim.</p>
+        <div class="accessibility-list">
+          <span>Semantic structure</span>
+          <span>Labelled inputs</span>
+          <span>Visible focus states</span>
+          <span>Keyboard-friendly controls</span>
+          <span>Readable typography</span>
+          <span>Touch-friendly controls</span>
+          <span>Meaningful validation</span>
+          <span>No color-only status communication</span>
+          <span>Accessible progress indicator</span>
+          <span>Reduced-motion consideration</span>
+        </div>
+        <p>The implementation includes screen-reader-oriented progress text, <code>aria-current="step"</code> for the active booking step, and <code>role="alert"</code> for the connection error state. Accessibility was considered as part of the interaction, not added as a final checklist.</p>
       </div>
     </section>
 
-    <section class="panel">
-      <span class="step-marker">18 — Reflection</span>
-      <h2>What this case study is — and is not</h2>
-      <p>This is a concept exploration. It shows how I think through a human-centered problem: making assumptions visible, planning research, structuring information, designing for accessibility, and preparing to validate. It is not a claim of completed fieldwork, professional client work, or tested outcomes.</p>
-      <p>Next, I would run the proposed research and usability study, replace the proto-personas with research-backed ones, and iterate the design against measured results.</p>
+    <section class="case-section">
+      <div class="case-section-label">07 — Localization</div>
+      <div>
+        <h2>Language changes more than the label.</h2>
+        <p>MediFlow implements an English/Hindi language switch across interface content and data labels, including specialties, consultation types, appointment information, and form/error messages.</p>
+        <div class="language-pair">
+          <div><span>English</span><b>Find a doctor</b><b>Book appointment</b><b>Confirm</b></div>
+          <div><span>Hindi</span><b lang="hi">डॉक्टर खोजें</b><b lang="hi">अपॉइंटमेंट बुक करें</b><b lang="hi">पुष्टि करें</b></div>
+        </div>
+        <p>The interface explores how language choice affects comprehension, layout, and interaction. Further validation with native speakers would be the next step.</p>
+      </div>
     </section>
 
-    <div class="case-actions">
-      <a class="btn-case" href="index.html#work">← Back to portfolio</a>
-      <a class="btn-case secondary" href="index.html#contact">Contact me</a>
+    <section class="case-section case-error-section">
+      <div class="case-section-label">Low-connectivity thinking</div>
+      <div>
+        <div class="connection-state">
+          <span class="connection-icon" aria-hidden="true">!</span>
+          <div><b>Your connection was interrupted.</b><span>Check your connection and try again.</span></div>
+          <button type="button" disabled>Retry</button>
+        </div>
+        <p>The prototype includes a connection-interruption state and preserves form information locally so an interrupted session does not unnecessarily erase what the user entered.</p>
+        <p class="case-note">The application is not actually offline-capable. This is a UX resilience demonstration, not a production offline healthcare system.</p>
+      </div>
+    </section>
+
+    <section class="case-section implementation-section">
+      <div class="case-section-label">08 — Implementation &amp; Reflection</div>
+      <div>
+        <h2>Design thinking → interface → implementation → working prototype</h2>
+        <div class="implementation-flow">
+          <span>Design thinking</span><i aria-hidden="true">→</i><span>Interface</span><i aria-hidden="true">→</i><span>Implementation</span><i aria-hidden="true">→</i><span>Working prototype</span>
+        </div>
+        <p>MediFlow is implemented with React, TypeScript, TanStack Router / TanStack Start, Vite, Tailwind CSS, Lucide icons, React Hook Form, Zod-related form infrastructure, and browser localStorage for preserving booking state. It was built through Lovable and is deployed as a working web experience.</p>
+        <a class="btn btn-primary" href="https://mediflow-connect-henna.vercel.app/" target="_blank" rel="noopener">Try MediFlow <span aria-hidden="true">↗</span></a>
+      </div>
+    </section>
+
+    <section class="case-section reflection-section">
+      <div class="case-section-label">Reflection</div>
+      <div>
+        <div class="reflection-grid">
+          <article><b>What worked</b><p>The focused booking flow makes the next action clear.</p></article>
+          <article><b>What remains uncertain</b><p>The design assumptions still need validation with real users.</p></article>
+          <article><b>What I would test next</b><p>Run moderated usability sessions to evaluate comprehension, hesitation, language preference, and task completion.</p></article>
+        </div>
+        <p class="case-note">No interviews, surveys, field studies, or usability tests are represented in this project. Potential future methods include semi-structured interviews, contextual inquiry, surveys, competitive review, and moderated usability testing.</p>
+      </div>
+    </section>
+
+    <div class="case-footer-actions">
+      <a class="btn btn-primary" href="https://mediflow-connect-henna.vercel.app/" target="_blank" rel="noopener">Try MediFlow <span aria-hidden="true">↗</span></a>
+      <a class="text-btn" href="index.html#contact">Say hello <span aria-hidden="true">→</span></a>
     </div>
   </main>
 
