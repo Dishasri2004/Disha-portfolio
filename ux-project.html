@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="MediFlow UX case study for a healthcare appointment app concept." />
+  <title>MediFlow | Healthcare Appointment App</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    body { background: #f5f6f2; }
+    .case-study { max-width: 1160px; margin: 0 auto; padding: 60px 20px 80px; }
+    .case-hero {
+      background: linear-gradient(135deg, #edf6f3 0%, #eef2ff 100%);
+      border: 1px solid #dfe5df;
+      border-radius: 28px;
+      padding: 42px 36px;
+      margin-bottom: 30px;
+    }
+    .case-kicker {
+      font-size: 12px; letter-spacing: .14em; text-transform: uppercase; font-weight: 800; color: #2b6657; margin-bottom: 12px;
+    }
+    .case-hero h1 { font-size: clamp(34px, 4vw, 58px); margin: 0 0 18px; letter-spacing: -0.05em; }
+    .hero-meta { display:flex; flex-wrap:wrap; gap:16px; color:#49605c; font-size:14px; font-weight:600; }
+    .case-grid { display:grid; grid-template-columns:1.35fr 0.95fr; gap:26px; }
+    .panel {
+      background:#fffefb; border:1px solid #e2ded5; border-radius:24px; padding:26px; box-shadow:0 12px 30px rgba(22,30,29,.04);
+    }
+    .panel h2 { font-size:24px; margin:0 0 14px; }
+    .panel p, .panel li { color:#4e5856; font-size:15px; line-height:1.8; }
+    ul { margin:0; padding-left:18px; }
+    .stats { display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:14px; margin-top:18px; }
+    .stat { background:#f2f5f1; border:1px solid #e1e7e1; border-radius:16px; padding:16px; }
+    .stat strong { display:block; font-size:22px; color:#172d29; margin-bottom:5px; }
+    .stat span { color:#586964; font-size:13px; }
+    .screen-layout { display:grid; grid-template-columns:repeat(4, 1fr); gap:18px; margin-top:30px; }
+    .screen-card {
+      background:linear-gradient(180deg, #f9faf7, #f1efe9); border:1px solid #e6e1d6; border-radius:22px; min-height:260px; padding:18px; position:relative; overflow:hidden;
+    }
+    .phone-mock { width:145px; height:215px; margin:0 auto; background:white; border-radius:24px; border:1px solid #ece8df; box-shadow:0 18px 30px rgba(22,29,34,.08); padding:12px; }
+    .mini-top { display:flex; justify-content:flex-end; gap:5px; margin-bottom:10px; }
+    .mini-top span { display:inline-block; width:6px; height:6px; border-radius:50%; background:#d9d8d4; }
+    .mini-hero { height:30px; border-radius:10px; background:#eaf0ef; margin-bottom:10px; }
+    .mini-pill { height:14px; width:70%; border-radius:999px; background:#edf4f2; margin-bottom:8px; }
+    .doctor-card { height:56px; border-radius:12px; background:linear-gradient(135deg,#dfeef0,#c5dfe5); margin-bottom:10px; }
+    .mini-row { height:18px; background:#eef1ef; border-radius:8px; margin-bottom:8px; }
+    .mini-button { height:26px; border-radius:10px; background:#dfe8e6; margin-top:14px; }
+    .mini-badge { display:flex; justify-content:space-between; gap:6px; margin-bottom:8px; }
+    .mini-badge span { display:inline-block; flex:1; height:20px; border-radius:999px; background:#ebf1ef; }
+    .case-actions { display:flex; gap:16px; margin-top:28px; flex-wrap:wrap; }
+    .btn-case {
+      display:inline-flex; align-items:center; gap:8px; background:#2d5a4d; color:white; padding:12px 20px; border-radius:12px; font-weight:700; text-decoration:none;
+    }
+    .btn-case.secondary { background:white; color:#22473b; border:1px solid #d7d2c8; }
+    @media (max-width: 900px) { .case-grid { grid-template-columns:1fr; } .screen-layout { grid-template-columns:repeat(2,1fr);} }
+    @media (max-width: 560px) { .screen-layout { grid-template-columns:1fr; } }
+  </style>
+</head>
+<body>
+  <header class="nav-wrap">
+    <nav class="nav container" aria-label="Primary navigation">
+      <a class="brand" href="index.html" aria-label="Disha Srivastava home">
+        <span class="brand-mark">DS</span>
+        <span>Disha Srivastava</span>
+      </a>
+      <div class="nav-links" id="nav-links">
+        <a href="index.html#work">Work</a>
+        <a href="index.html#about">About</a>
+        <a href="index.html#skills">Toolkit</a>
+        <a class="nav-cta" href="index.html#contact">Let's Connect <span>↗</span></a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="case-study">
+    <section class="case-hero">
+      <div class="case-kicker">UX Case Study</div>
+      <h1>MediFlow</h1>
+      <div class="hero-meta">
+        <span>Healthcare Appointment App</span>
+        <span>•</span>
+        <span>Beginner UI/UX Concept</span>
+        <span>•</span>
+        <span>Fresher Portfolio Project</span>
+      </div>
+    </section>
+
+    <section class="case-grid">
+      <div class="panel">
+        <h2>Project Overview</h2>
+        <p>
+          MediFlow is a healthcare appointment app concept designed to help patients book doctor consultations quickly,
+          understand appointment availability, and feel more confident while choosing care. The design focuses on trust,
+          clarity, and speed for people who are often stressed or in a rush when seeking medical help.
+        </p>
+
+        <h2>Problem</h2>
+        <p>
+          Many patients struggle with confusing booking processes, unclear doctor options, and poor visibility into available time slots.
+          The app needed to make booking feel simple, reassuring, and easy even for first-time users.
+        </p>
+
+        <h2>Solution</h2>
+        <p>
+          I designed a minimal and calm interface with three key actions: find a doctor, choose a time slot, and confirm the appointment.
+          The app uses clear categories, soft visuals, and readable information to reduce anxiety and improve decision-making.
+        </p>
+      </div>
+
+      <div class="panel">
+        <h2>Key outcomes</h2>
+        <div class="stats">
+          <div class="stat">
+            <strong>3</strong>
+            <span>Main user flow steps</span>
+          </div>
+          <div class="stat">
+            <strong>1</strong>
+            <span>Simple booking goal</span>
+          </div>
+          <div class="stat">
+            <strong>UX</strong>
+            <span>Calm and accessible</span>
+          </div>
+          <div class="stat">
+            <strong>UI</strong>
+            <span>Clean medical hierarchy</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel" style="margin-top:26px;">
+      <h2>Design process</h2>
+      <ul>
+        <li><strong>Research:</strong> Studied common healthcare app frustrations like unclear slot selection and overwhelming information.</li>
+        <li><strong>User flow:</strong> Built a simple flow from home → doctor selection → appointment booking → confirmation.</li>
+        <li><strong>Information hierarchy:</strong> Prioritized doctor specialization, time slots, and appointment summary for quick decision making.</li>
+        <li><strong>Visual style:</strong> Chose soft green and white tones to feel clean, trustworthy, and calm.</li>
+        <li><strong>Usability focus:</strong> Reduced extra steps so users can complete booking in a few taps without confusion.</li>
+      </ul>
+    </section>
+
+    <section style="margin-top:30px;">
+      <h2 style="font-size:28px; margin-bottom:18px;">App screens</h2>
+      <div class="screen-layout">
+        <div class="screen-card">
+          <img src="images/cropped/ui_1.png" alt="MediEase home screen onboarding" style="width:100%; height:100%; object-fit:contain; border-radius:18px;" />
+        </div>
+        <div class="screen-card">
+          <img src="images/cropped/ui_2.png" alt="MediEase specialization and doctor list screen" style="width:100%; height:100%; object-fit:contain; border-radius:18px;" />
+        </div>
+        <div class="screen-card">
+          <img src="images/cropped/ui_3.png" alt="MediEase date and slot selection screen" style="width:100%; height:100%; object-fit:contain; border-radius:18px;" />
+        </div>
+        <div class="screen-card">
+          <img src="images/cropped/ui_4.png" alt="MediEase appointment confirmation screen" style="width:100%; height:100%; object-fit:contain; border-radius:18px;" />
+        </div>
+      </div>
+    </section>
+
+    <section class="panel" style="margin-top:30px;">
+      <h2>Why it works for a UX intern profile</h2>
+      <p>
+        This project shows I can think from the user’s perspective, organize information clearly, and create a polished mobile experience without unnecessary clutter.
+        It demonstrates beginner-level UX thinking, emotional design, and understanding of healthcare app usability.
+      </p>
+    </section>
+
+    <div class="case-actions">
+      <a class="btn-case" href="index.html#work">← Back to portfolio</a>
+      <a class="btn-case secondary" href="index.html#contact">Contact me</a>
+    </div>
+  </main>
+</body>
+</html>
